@@ -4,15 +4,16 @@ from django.db import models
 from django.forms import DateTimeField
 from django.utils import timezone
 
-
 # Create your models here.
 
 class Post(models.Model): 
 
     # Attributes
-    author: str = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title: str = models.CharField(max_length=200)
-    text: str = models.TextField()
+    author: models.ForeignKey = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+    )
+    title: models.CharField = models.CharField(max_length=200)
+    text: models.TextField = models.TextField()
     created_date = models.DateTimeField(
         default = timezone.now
     )
