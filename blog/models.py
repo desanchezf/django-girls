@@ -14,10 +14,10 @@ class Post(models.Model):
     )
     title: models.CharField = models.CharField(max_length=200)
     text: models.TextField = models.TextField()
-    created_date = models.DateTimeField(
+    created_date: models.DateTimeField = models.DateTimeField(
         default = timezone.now
     )
-    published_date = models.DateTimeField(
+    published_date: models.DateField = models.DateTimeField(
         blank=True, 
         null=True
     )
