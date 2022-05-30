@@ -1,10 +1,11 @@
+from asyncio import tasks
 from time import time
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
 from .forms import PostForm
 from .models import Post
-
+from .tasks import *
 
 # Create your views here.
 
@@ -30,6 +31,7 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
+            print(add.delay(3, 2))
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
