@@ -130,12 +130,43 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CELERY conf 
 
+"""
+A white-list of content-types/serializers to allow.
+"""
 CELERY_ACCEPT_CONTENT = ['application/json']
+
+"""
+Default broker URL
+"""
 CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')
+
+"""
+The backend used to store task results (tombstones)
+"""
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
+"""
+Result serialization format.
+"""
 CELERY_RESULT_SERIALIZER = 'json'
+
+"""
+If this is True, all tasks will be executed locally by 
+blocking until the task returns.
+"""
 CELERY_TASK_ALWAYS_EAGER = True
+
+"""
+A string identifying the default serialization method 
+to use. Can be json (default), pickle, yaml, msgpack, 
+or any custom serialization methods.
+"""
 CELERY_TASK_SERIALIZER = 'json'
+
+
+"""
+Configure Celery to use a custom time zone
+"""
 CELERY_TIMEZONE = 'Europe/Berlin'
 
 # REDIS conf 
