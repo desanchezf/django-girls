@@ -140,6 +140,7 @@ Default broker URL
 """
 CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')
 
+
 """
 The backend used to store task results (tombstones)
 """

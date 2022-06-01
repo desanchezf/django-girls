@@ -31,7 +31,12 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
+            print("_____________________")
             print(add.delay(3, 2))
+            print(type(add.delay(3, 2)))
+            print("_____________________")
+            print(add(3, 2))
+            print("_____________________")
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()

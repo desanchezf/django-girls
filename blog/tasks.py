@@ -7,7 +7,7 @@ from celery import shared_task
     por el worker de Celery.
 """
 
-@shared_task
+@shared_task(name="Suma 3 mas 2")
 def add(x, y) -> int: 
     
     print("Se ha añadido una nueva entrada al blog")
