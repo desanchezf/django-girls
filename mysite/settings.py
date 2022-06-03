@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-%3boq5k$1n16b_v1(o$kzy0g-^9wnxn_i0h_e*mnp^$j7l1wq6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 
 # Application definition
@@ -137,14 +137,16 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 
 """
 Default broker URL
+En caso de que NO SEA DOCKERIZADO redis://localhost:6379 (no redis://redis:6379)
 """
 CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')
 
 
 """
 The backend used to store task results (tombstones)
+Independientemente de que sea dockerizado o no
 """
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
 
 """
 Result serialization format.
